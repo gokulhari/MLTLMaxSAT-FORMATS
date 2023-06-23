@@ -2,7 +2,7 @@
 
 Mission-time Linear Temporal Logic (MLTL) is a popular language for specifications in safety-critical cyber-physical systems. MLTL is a variant of Linear Temporal Logic (LTL) with finite interval bounds on temporal operators. It is often hard to satisfy all requirements, and prioritization and trade-offs are integral to designing complex systems. Given a set of specifications, the maximum satisfiability problem (MaxSAT) asks to find the maximum number of simultaneously satisfiable specifications. Considering the significant advances in MaxSAT for boolean logic, we develop translations of MLTL to boolean logic. Given an MLTL formula $\phi$ of length $|\phi|$ with maximum interval length $m$, our first translator runs in $\mathcal O(m^{|\phi|})$ time. Performance tests of satisfiability checks on MaxSAT instances show that this exponential translation performs significantly better than the best satisfiability checking approaches reported recently in the literature on random instances. Furthermore, we report an improved translation algorithm that runs in $\mathcal O(|\phi|^2m^2)$ time that outperforms the best approaches reported thus far on both real and synthetic (random) specifications. The new approach is embarrassingly parallelizable to a factor of $|\phi|m$. We contribute to (1) an easy-to-implement translation from MLTL to boolean logic that runs in $\mathcal O(m^{|\phi|})$ time, and (2) an efficient translation that runs in $\mathcal O(|\phi|^2m^2)$ time, and we prove their correctness and runtime. Lastly, (3) we consider example cases of using existing boolean MaxSAT solvers to solve the MLTL MaxSAT problem.
 
-## What this artifact includes
+## This artifact
 This artifact shares everything needed to reproduce Figures 1a-1d, 2a-2d and Table 2, which covers all results in this paper. To get started, download the Docker image, and start an interactive terminal using it. The Docker image has Ubuntu 22.04 installed in it, with everything installed. We also provide the Dockerfile used to produce this image. In the interactive terminal, navigate to the home folder:
 ```bash
 cd /home/gokul/
@@ -40,8 +40,26 @@ bash runAll.sh
 ```
 
 ### To reproduce Table 2
-The tough MaxSAT instances in Table 2 are included 
+Explore that the test cases of Table 2 are available in `MLTLMaxSAT-FORMATS/Benchmarks/MaxSATCases/`, from inside `MLTLMaxSAT-FORMATS/`:
+```bash
+ls Benchmarks/MaxSATCases/
+``` 
+and see the test cases listed. In each `.mltl` file, each line in the file is a MaxSAT clause.  To run any desired case, navigate to the `MLTLMaxSAT-FORMATS/build/` directory in the terminal type:
+```bash
+./MaxSAT ../Benchmarks/MaxSATCases/testP4L10M100.mltl
+``` 
+likewise for other test cases in that folder. MaxSAT executable needs the location of the file in other words.
 
+## Detailed description of files.
+
+There are 5 executables in the build folder:
+1. `main`, this one executes the fast translation to Boolean logic
+2. `main2`, this one executes Li et al.'s SMT translation 
+3. `main3`,  this one executes the slow translaltion to Boolean logic.
+4. `genMLTLBenchmarks`, this one takes LTL formula files and converts them to MLTL formulas by assigning random intervals. 
+5. `benchmarker`, this one takes as input an file with a list of MLTL formulas (only separated by the newline character), and runs `main`, `main2` and `main3` on each of those formulas, and then also runs a SAT check using the Z3 solver, measures the time, and stores the results in the BenchmarkResults directory. The outputs are three files with the same name as the input file, but with extensions `.prop`, `.propS`, and `.smt2`, for the results with the fast Boolean translator, slow Boolean translator, and Li et al.'s SMT translation respectively.
+
+#Misc.
 
 We use the following open-source works, and the copyright belongs to the respective owners:
 1. Z3 theorem prover

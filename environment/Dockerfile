@@ -14,11 +14,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN mkdir /home/gokul && \
 cd /home/gokul && \
 git config --global http.sslverify false && \
-git clone https://github.com/gokulhari/MLTLMaxSAT-FORMATS.git && \
 wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.sh && \
 yes | bash cmake-3.22.1-linux-x86_64.sh
 
 RUN cd /home/gokul && \ 
+git clone https://github.com/gokulhari/MLTLMaxSAT-FORMATS.git && \
 cd MLTLMaxSAT-FORMATS && \
 mkdir build && \
 cd build && \
@@ -27,5 +27,17 @@ make -j12
 
 RUN cd /home/gokul/ && \
 wget https://temporallogic.org/research/CAV19/artifact.tar.xz && \
-tar -xf artifact.tar.xz && \
+tar -xf artifact.tar.xz
+
+RUN cd /home/gokul/ && \
+wget -O nuXmv.tar.gz  "https://nuxmv.fbk.eu/theme/download.php?file=nuXmv-2.0.0-linux64.tar.gz" && \
+tar -xf nuXmv.tar.gz
+
+RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get update \
+  && apt-get install -y zlib1g zlib1g-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN cd /home/gokul/artifact/translator/src && \
+make run && \
 pip install matplotlib
