@@ -32,7 +32,7 @@ void tester(std::string left) {
   outfile << out << endl;
   outfile.close();
   int bre;
-  system("/home/gokul/usr/bin/z3 -smt2 temp.smt");
+  system("./usr/bin/z3 -smt2 temp.smt");
   // cin >> bre; 
 };
 
