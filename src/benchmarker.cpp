@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     auto stopT = high_resolution_clock::now();
 
     // Solving:
-    string cmd2 = path2z3 + " -T:180 -smt2 " + tempFile + " > " + tempout + "\n";
+    string cmd2 = path2z3 + " -T:300 -smt2 " + tempFile + " > " + tempout + "\n";
     auto startS = high_resolution_clock::now();
     system(cmd2.c_str());
     auto stopS = high_resolution_clock::now();
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     stopT = high_resolution_clock::now();
 
     // Solving:
-    cmd2 = path2z3 + " -T:180 -smt2 " + tempFile + " > " + tempout + "\n";
+    cmd2 = path2z3 + " -T:300 -smt2 " + tempFile + " > " + tempout + "\n";
     startS = high_resolution_clock::now();
     system(cmd2.c_str());
     stopS = high_resolution_clock::now();
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
     stopT = high_resolution_clock::now();
 
     // Solving:
-    cmd2 = path2z3 + " -T:180 -smt2 " + tempFile + " > " + tempout + "\n";
+    cmd2 = path2z3 + " -T:300 -smt2 " + tempFile + " > " + tempout + "\n";
     startS = high_resolution_clock::now();
     system(cmd2.c_str());
     stopS = high_resolution_clock::now();

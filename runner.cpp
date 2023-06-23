@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   string tempSmvFile = prefix + "temp.smv";
   string nuXmvExe = prefix + "nuXmv-2.0.0-Linux/bin/nuXmv ";
   string mltlConverterExe =
-      prefix + "/home/gokul/artifact/translator/src/MLTLConvertor ";
+      prefix + "artifact/translator/src/MLTLConvertor ";
 
   ifstream infile(prefix + "MLTLMaxSAT-FORMATS/Benchmarks/MLTLSatisfiability/randomList.mltl");
   ofstream ouic3(prefix + "MLTLMaxSAT-FORMATS/BenchmarkResults/randomList.ic3");
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     bashFile.close();
     system(("chmod u+x " + tempSh).c_str());
     start = high_resolution_clock::now();
-    system(("timeout 5s bash " + tempSh + " && echo $? > some.txt").c_str());
+    system(("timeout 5m bash " + tempSh + " && echo $? > some.txt").c_str());
     stop = high_resolution_clock::now();
     auto elapsedSat = duration_cast<milliseconds>(stop - start);
     ouic3 << elapsedTranslation.count() << "\t\t" << elapsedSat.count()
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
     system(("chmod u+x " + tempSh).c_str());
     start = high_resolution_clock::now();
-    system(("timeout 5s bash " + tempSh).c_str());
+    system(("timeout 5m bash " + tempSh).c_str());
     stop = high_resolution_clock::now();
     elapsedSat = duration_cast<milliseconds>(stop - start);
 

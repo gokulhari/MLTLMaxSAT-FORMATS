@@ -21,6 +21,7 @@ RUN cd /home/gokul && \
 git clone https://github.com/gokulhari/MLTLMaxSAT-FORMATS.git && \
 cd MLTLMaxSAT-FORMATS && \
 mkdir build && \
+g++ runner.cpp -o runner && \
 cd build && \
 /home/gokul/cmake-3.22.1-linux-x86_64/bin/cmake .. && \
 make -j12

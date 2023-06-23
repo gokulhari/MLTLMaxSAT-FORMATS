@@ -16,4 +16,5 @@ cd build
 ./benchmarker "../Benchmarks/MLTLSatisfiability/nominal_properties00.mltl"
 ./benchmarker "../Benchmarks/MLTLSatisfiability/verification_properties00.mltl"
 ./benchmarker "../Benchmarks/MLTLSatisfiability/randomList.mltl"
+cd ../
 ./runner
