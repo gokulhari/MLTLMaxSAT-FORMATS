@@ -8,8 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && apt-get install -y wget \
   && apt-get install -y git \
   && apt-get install -y openjdk-11-jre \
-  && apt-get install -y python3-matplotlib \
-  && apt-get install -y python3-numpy \
+  && apt-get install -y python3-pip \
   && rm -rf /var/lib/apt/lists/* 
 
 RUN mkdir /home/gokul && \
@@ -28,4 +27,5 @@ make -j12
 
 RUN cd /home/gokul/ && \
 wget https://temporallogic.org/research/CAV19/artifact.tar.xz && \
-tar -xf artifact.tar.xz
+tar -xf artifact.tar.xz && \
+pip install matplotlib

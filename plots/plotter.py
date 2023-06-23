@@ -6,9 +6,9 @@ import matplotlib.colors as mcolors
 from matplotlib.markers import MarkerStyle
 
 
-matplotlib.rcParams['font.family'] = "CMU Serif"
-matplotlib.rcParams['text.latex.preamble'] = r"\usepackage{amssymb,amsfonts,amsmath,stix}"
-matplotlib.rcParams['text.usetex'] = True
+# matplotlib.rcParams['font.family'] = "CMU Serif"
+# matplotlib.rcParams['text.latex.preamble'] = r"\usepackage{amssymb,amsfonts,amsmath,stix}"
+# matplotlib.rcParams['text.usetex'] = True
 plt.style.use(['presentation.mplstyle'])
 restypes = ["prop","propS","smt2"]
 outsT = dict()
@@ -115,16 +115,16 @@ plt.ylabel("Cum. Time (milliseconds)" , fontsize=20)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
 plt.legend(["SMT", "Bool-fast","Bool-slow"], fontsize=14)
-textstr = '\n'.join((
-    r'$\Diamond\quad m = 10^2$',
-    r'$\pentagon \quad m = 10^3 $' ,
-    '$\Box\quad m=10^4$' ))
+# textstr = '\n'.join((
+#     r'$\Diamond\quad m = 10^2$',
+#     r'$\pentagon \quad m = 10^3 $' ,
+#     '$\Box\quad m=10^4$' ))
 # these are matplotlib.patch.Patch properties
 props = dict(facecolor='white', alpha=0.5)
 
 # place a text box in upper left in axes coords
-ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
-        verticalalignment='bottom', bbox=props)
+# ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
+#         verticalalignment='bottom', bbox=props)
 plt.savefig("1a.png", bbox_inches='tight')
 
 ax.clear()
@@ -158,14 +158,14 @@ plt.ylabel("Cum. Time (milliseconds)" , fontsize=20)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
 plt.legend(["SMT", "Bool-fast","Bool-slow"], fontsize=14)
-textstr = '\n'.join((
-    r'$\Diamond\quad m = 10^2$',
-    r'$\pentagon\quad m = 10^3 $' ,
-    '$\Box\quad m=10^4$' ))
+# textstr = '\n'.join((
+#     r'$\Diamond\quad m = 10^2$',
+#     r'$\pentagon\quad m = 10^3 $' ,
+#     '$\Box\quad m=10^4$' ))
 # these are matplotlib.patch.Patch properties
 props = dict(facecolor='white', alpha=0.5)
-ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
-        verticalalignment='bottom', bbox=props)
+# ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
+        # verticalalignment='bottom', bbox=props)
 plt.savefig("1b.png", bbox_inches='tight')
 
 
@@ -200,16 +200,16 @@ plt.ylabel("Cum. Time (milliseconds)" , fontsize=20)
 plt.xticks(fontsize=18)
 plt.yticks(fontsize=18)
 plt.legend(["SMT", "Bool-fast","Bool-slow"], fontsize=14)
-textstr = '\n'.join((
-    r'$\Diamond\quad m = 10^2$',
-    r'$\pentagon\quad m = 10^3 $' ,
-    '$\Box\quad m=10^4$' ))
+# textstr = '\n'.join((
+#     r'$\Diamond\quad m = 10^2$',
+#     r'$\pentagon\quad m = 10^3 $' ,
+#     '$\Box\quad m=10^4$' ))
 # these are matplotlib.patch.Patch properties
-props = dict(facecolor='white', alpha=0.5)
+# props = dict(facecolor='white', alpha=0.5)
 
 # place a text box in upper left in axes coords
-ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
-        verticalalignment='bottom', bbox=props)
+# ax.text(0.3, 0.05, textstr, transform=ax.transAxes, fontsize=14,
+        # verticalalignment='bottom', bbox=props)
 plt.savefig("1c.png", bbox_inches='tight')
 
 plt.clf()

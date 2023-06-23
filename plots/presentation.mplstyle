@@ -4,4 +4,3 @@ lines.linewidth : 2
 lines.markersize : 11
 xtick.labelsize : 16
 ytick.labelsize : 16
-text.usetex: true
