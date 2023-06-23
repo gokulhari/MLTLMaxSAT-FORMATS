@@ -25,7 +25,11 @@ This will regenerate the plots 1a-1d, and 2a-2d by using the existing data in `M
 
 ## Regenerating data by yourself:
 
-It took us 34 hours in total to produce the data. As this might be too long, we arranged a shorter version that you can generate in about 2 hours. The short version reproduces 3 out of 5 curves in figures 2a-2d, i.e., the ones marked as SMT, Bool-slow and Bool-fast (as these are the fastest approaches, the plots are faster as well).  
+It took us 34 hours in total to produce the data. As this might be too long, we arranged a shorter version that you can generate in about 2 hours. 
+
+In summary, there are five appraoches that we consider: The SMT (of Li et al.), the slow and fast boolean transaltions, and the IC3 and BMC appraoches (of Li et al., both of which use the SMV translation). These five approaches are used on two sets of data: real NASA-ATF and random instances. However, the real instances have ternary operators that aren't accomodated by the Li et al.'s parsers, and hence, the we do not have results with the SMV translation for real instances.   
+
+The short version reproduces 3 out of 5 curves in figures 2a-2d, i.e., the ones marked as SMT, Bool-slow and Bool-fast (these are the fastest approaches, consequently, the data is generated faster as well).  
 
 ### The short version for quick reproduction
 Go inside the directory `MLTLMaxSAT-FORMATS`, and run:
