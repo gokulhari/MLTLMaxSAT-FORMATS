@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
   string path2z3 = "./usr/bin/z3";
 
   // these need not be updated if the path2proj is correct:
-  string path2smt2 = "./main2";
-  string path2prop = "./main";
-  string path2propS = "./main3";
+  string path2smt2 = "./MLTL2LiSMT";
+  string path2prop = "./MLTL2propFast";
+  string path2propS = "./MLTL2propSlow";
   string resultsdir = "../BenchmarkResults/";
 
   // Temporary files
