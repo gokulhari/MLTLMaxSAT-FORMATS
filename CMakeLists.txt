@@ -48,14 +48,6 @@ message("This is ${ANTLR_EXECUTABLE}")
 # add macros to generate ANTLR Cpp code from grammar
 find_package(ANTLR REQUIRED)
 
-ExternalProject_Add(z3
-PREFIX "${CMAKE_BINARY_DIR}"
-GIT_REPOSITORY "https://github.com/Z3Prover/z3.git"
-GIT_TAG "49ee570b09047cbea94f7d26e3df10c86c9ce596"
-GIT_REMOTE_UPDATE_STRATEGY CHECKOUT
-CMAKE_ARGS 
-  -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/usr)
-
 # Call macro to add lexer and grammar to your build dependencies.
 # antlr_target(SampleGrammarLexer TLexer.g4 LEXER
             #  PACKAGE antlrcpptest)
@@ -82,17 +74,21 @@ src/Translators.cpp
 ${ANTLR_MLTLParser_CXX_OUTPUTS}
 ${ANTLR_LTLParser_CXX_OUTPUTS})
 add_dependencies(translator antlr4_runtime)
+add_executable(MLTL2propFast src/MLTL2propFast.cpp
+                ${ANTLR_MLTLParser_CXX_OUTPUTS})
+target_link_libraries(MLTL2propFast antlr4_static translator)
+
 add_executable(main src/main.cpp
                 ${ANTLR_MLTLParser_CXX_OUTPUTS})
 target_link_libraries(main antlr4_static translator)
 
-add_executable(main2 src/main2.cpp
+add_executable(MLTL2LiSMT src/MLTL2LiSMT.cpp
                 ${ANTLR_MLTLParser_CXX_OUTPUTS})
-target_link_libraries(main2 antlr4_static translator)
+target_link_libraries(MLTL2LiSMT antlr4_static translator)
 
-add_executable(main3 src/main3.cpp
+add_executable(MLTL2propSlow src/MLTL2propSlow.cpp
                 ${ANTLR_MLTLParser_CXX_OUTPUTS})
-target_link_libraries(main3 antlr4_static translator)
+target_link_libraries(MLTL2propSlow antlr4_static translator)
 
 add_executable(MaxSAT src/MaxSAT.cpp
                 ${ANTLR_MLTLParser_CXX_OUTPUTS})
