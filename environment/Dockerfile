@@ -23,8 +23,18 @@ cd MLTLMaxSAT-FORMATS && \
 mkdir build && \
 g++ runner.cpp -o runner && \
 cd build && \
-/home/gokul/cmake-3.22.1-linux-x86_64/bin/cmake .. && \
-make -j12
+ln -s /home/gokul/cmake-3.22.1-linux-x86_64/bin/cmake /bin/cmake && \
+cmake .. && \
+make -j12 && \
+git clone https://github.com/Z3Prover/z3.git  && \
+cd z3 && \
+git checkout 49ee570b09047cbea94f7d26e3df10c86c9ce596 && \
+mkdir build && \
+cd build && \
+cmake .. -DCMAKE_INSTALL_PREFIX=../../usr && \
+make -j12 && \
+make install
+
 
 RUN cd /home/gokul/ && \
 wget https://temporallogic.org/research/CAV19/artifact.tar.xz && \
