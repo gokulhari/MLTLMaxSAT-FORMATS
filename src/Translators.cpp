@@ -174,7 +174,7 @@ Translators::getConstraints(MLTLFormula* f) {
     Q.push(v->right.get());
     break;
   case MLTLFormula::Implies:
-    res.push_back("(=> " + v->right->gf(0) + " " + v->left->gf(0) + ")");
+    res.push_back("(=> " + v->left->gf(0) + " " + v->right->gf(0) + ")");
     Q.push(v->left.get());
     Q.push(v->right.get());
     break;
@@ -276,8 +276,8 @@ Translators::getConstraints(MLTLFormula* f) {
       break;
     case MLTLFormula::Implies:
       for (int i = v->alb; i <= v->aub; i++) {
-        res.push_back("(= " + v->gf(i) + " (=> " + v->right->gf(i) + " " +
-                      v->left->gf(i) + " ))");
+        res.push_back("(= " + v->gf(i) + " (=> " + v->left->gf(i) + " " +
+                      v->right->gf(i) + " ))");
       }
       Q.push(v->left.get());
       Q.push(v->right.get());

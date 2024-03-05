@@ -69,7 +69,10 @@ There are 6 executables in the build folder:
 5. `benchmarker`; takes as input an file with a list of MLTL formulas (only separated by the newline character), and runs `main`, `main2` and `main3` on each of those formulas.  It also runs a SAT check using the Z3 solver, measures the time, and stores the results in the BenchmarkResults directory. The outputs are three files with the same name as the input file, but with extensions `.prop`, `.propS`, and `.smt2`, for the results with the fast Boolean translator, slow Boolean translator, and Li et al.'s SMT translation respectively.
 6. `MaxSAT`; solves for the MLTL-MaxSAT problem. It takes as input a file with a list of MLTL formulas. Each clause must be in one line. The output is from z3, saying SAT and number of clauses that are satisfiable. Suppose there are 16 clauses, and MaxSAT returns "objectives (2)", that means that 16 - 2 = 14 clauses are simultaneously satisfiable. 
 
-#Misc.
+## LTL Syntax preferences
+We use Antlr for parsing. Users can modify [LTL.g4](./LTL.g4) to suit their preferred syntax. In specific, the operator precedence is such that operators on the top of the defition of an LTL expression (`expr` in [LTL.g4](./LTL.g4)) have higher precedence over ones at the bottom.    
+
+# Misc.
 
 We use the following open-source works, and the copyright belongs to the respective owners:
 1. Z3 theorem prover

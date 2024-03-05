@@ -4,11 +4,11 @@ program: expr EOF;
 
 expr:
 	'(' expr ')'									# parens_expr
+	| Neg expr										# neg_expr
 	| Global '[' Number ',' Number ']' expr			# global_expr
 	| Future '[' Number ',' Number ']' expr			# future_expr
 	| expr Until '[' Number ',' Number ']' expr		# until_expr
 	| expr Release '[' Number ',' Number ']' expr	# release_expr
-	| Neg expr										# neg_expr
 	| expr And expr									# and_expr
 	| expr Or expr									# or_expr
 	| expr Equiv expr								# equiv_expr
